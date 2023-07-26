@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SREČELOV</title>
+    <style>
+        body {
+            font-size: 20px;
+        }
+        h1 {
+            font-size: 28px;
+        }
+        input[type="number"], button {
+            font-size: 20px;
+        }
+        p {
+            font-size: 24px;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Vpiši številko (1-1000):</h1>
+    <form>
+        <input type="number" id="inputNumber" min="1" max="1000">
+        <button type="button" onclick="lookupName()">Poišči</button>
+    </form>
+    <p id="resultLabel"></p>
+
+    <script>
+        function lookupName() {
+            const inputNumber = document.getElementById("inputNumber").value;
+            const formData = new FormData();
+            formData.append("number", inputNumber);
+
+            fetch('/lookup', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(result => {
+                document.getElementById("resultLabel").textContent = result.result;
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
