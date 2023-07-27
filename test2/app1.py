@@ -3,9 +3,9 @@ from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
 
-def load_data_from_csv(filename):
+def load_data_from_csv(filename, encoding='utf-8'):
     data_dict = {}
-    with open(filename, 'r', newline='') as csvfile:
+    with open(filename, 'r', newline='', encoding=encoding) as csvfile:
         csv_reader = csv.reader(csvfile)
         for row in csv_reader:
             try:
@@ -16,7 +16,7 @@ def load_data_from_csv(filename):
     return data_dict
 
 filename = "dobitki.csv"  # Replace with the actual filename of your CSV
-data_dict = load_data_from_csv(filename)
+data_dict = load_data_from_csv(filename, encoding='cp1250')
 
 @app.route('/')
 def index():
@@ -30,13 +30,14 @@ def lookup():
             if user_input in data_dict:
                 result = data_dict[user_input]
             else:
-                result = "Number not found in the CSV."
+                result = "  tevilka ni veljavna v excel datoteki."
         else:
-            result = "Please enter a number between 1 and 1000."
+            result = "Prosim vnesite   tevilko od 1 - 1000."
     except ValueError:
-        result = "Invalid input. Please enter a valid number."
+        result = "neveljavni vnos. Prosim vnesite veljavno   tevilko."
 
     return jsonify({'result': result})
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
+    
