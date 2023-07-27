@@ -1,30 +1,66 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>SREČELOV</title>
+    <title>PGD Šešče - Srečelov</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
-            font-size: 20px;
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            color: #333;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            margin-top: 20px;
         }
         h1 {
-            font-size: 28px;
+            font-size: 24px;
+            text-align: center;
+            margin: 0 0 20px;
+            color: #4CAF50;
         }
-        input[type="number"], button {
-            font-size: 20px;
+        input[type="number"] {
+            width: 100%;
+            font-size: 18px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            font-size: 18px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
         p {
-            font-size: 24px;
+            font-size: 20px;
+            text-align: center;
+            margin: 20px 0;
         }
     </style>
-
 </head>
 <body>
-    <h1>Vpiši številko (1-1000):</h1>
-    <form>
-        <input type="number" id="inputNumber" min="1" max="1000">
-        <button type="button" onclick="lookupName()">Poišči</button>
-    </form>
-    <p id="resultLabel"></p>
+    <div class="container">
+        <h1>Vpiši številko dobitka</h1>
+        <form>
+            <input type="number" id="inputNumber" min="1" max="1000" placeholder="Št. dobitka">
+            <button type="button" onclick="lookupName()">Poišči</button>
+        </form>
+        <p id="resultLabel"></p>
+    </div>
 
     <script>
         function lookupName() {
