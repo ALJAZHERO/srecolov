@@ -30,11 +30,11 @@ def lookup():
             if user_input in data_dict:
                 result = data_dict[user_input]
             else:
-                result = "  tevilka ni veljavna v excel datoteki."
+                result = "Številka ni veljavna v excel datoteki."
         else:
-            result = "Prosim vnesite   tevilko od 1 - 1000."
+            result = "Prosim vnesite številko od 1 - 1000."
     except ValueError:
-        result = "neveljavni vnos. Prosim vnesite veljavno   tevilko."
+        result = "Neveljavni vnos. Prosim vnesite veljavno številko."
 
     return jsonify({'result': result})
 
